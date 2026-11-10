@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#141021">
+  <meta name="description" content="Test whether a built-in Violet Wire Bluetooth effect stays still at its lowest speed.">
+  <title>Two-color experiment · Violet Wire</title>
+  <link rel="stylesheet" href="./lab.css">
+  <script type="module" src="./lab.js"></script>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <a class="brand" href="https://wronghands.github.io/violet-wire/">Violet Wire home <span aria-hidden="true">↗</span></a>
+      <p class="eyebrow">Hardware experiment · 01</p>
+      <h1>Do two colors<br>stay still?</h1>
+      <p>Run a built-in effect at its lowest speed. Watch the physical strip to see if two colors stay in the same places for 30 seconds.</p>
+    </header>
+
+    <section class="card" aria-labelledby="effect-title">
+      <div class="effect-heading">
+        <h2 id="effect-title">Built-in effect</h2>
+        <span class="chip">Lowest speed</span>
+      </div>
+      <ul class="palette" aria-label="Effect colors listed in the source">
+        <li><span class="swatch red" aria-hidden="true"></span>Red</li>
+        <li><span class="swatch green" aria-hidden="true"></span>Green</li>
+      </ul>
+      <p class="hint">This controller may render the effect differently. Whether the lowest speed stops motion is unknown.</p>
+
+      <div class="connection">
+        <div>
+          <strong>GATT--DEMO</strong>
+          <p id="connection-status" role="status">Checking Bluetooth support…</p>
+        </div>
+        <button id="connect" type="button" disabled>Connect</button>
+        <button id="disconnect" type="button" hidden>Disconnect</button>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="try" type="button" disabled>Try</button>
+        <button id="restore" type="button" aria-describedby="restore-help" disabled>Return to solid red</button>
+      </div>
+      <p class="hint" id="restore-help">This sends only the known whole-strip red command. The previous speed setting is unknown.</p>
+      <p class="result" id="result" role="status">Before you start, check that the whole strip lights up in a single color.</p>
+      <noscript><p>Bluetooth requires JavaScript.</p></noscript>
+    </section>
+
+    <details class="diagnostics">
+      <summary>Experiment log and sources</summary>
+      <p>The log shows the browser’s FFF3 writes. Check the physical strip for the result.</p>
+      <ol id="log"></ol>
+      <a href="https://github.com/wronghands/violet-wire/blob/main/docs/STATIONARY_COLORS.md">Packets, sources, and test steps</a>
+    </details>
+  </main>
+</body>
+</html>
