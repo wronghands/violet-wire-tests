@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#141021">
+  <meta name="description" content="Violet Wire ile hazır bir Bluetooth efektinin en düşük hızda sabit kalıp kalmadığını gözlemle.">
+  <title>İki renk deneyi · Violet Wire</title>
+  <link rel="stylesheet" href="./lab.css">
+  <script type="module" src="./lab.js"></script>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <a class="brand" href="https://wronghands.github.io/violet-wire/">Violet Wire ana sayfa <span aria-hidden="true">↗</span></a>
+      <p class="eyebrow">Donanım deneyi · 01</p>
+      <h1>İki renk sabit<br>kalıyor mu?</h1>
+      <p>Hazır bir efekti en düşük hızda çalıştır. İki rengin fiziksel şeritte 30 saniye aynı yerde kalıp kalmadığını izle.</p>
+    </header>
+
+    <section class="card" aria-labelledby="effect-title">
+      <div class="effect-heading">
+        <h2 id="effect-title">Hazır efekt</h2>
+        <span class="chip">En düşük hız</span>
+      </div>
+      <ul class="palette" aria-label="Kaynakta belirtilen efekt renkleri">
+        <li><span class="swatch red" aria-hidden="true"></span>Kırmızı</li>
+        <li><span class="swatch green" aria-hidden="true"></span>Yeşil</li>
+      </ul>
+      <p class="hint">Efekt bu cihazda farklı görünebilir. En düşük hızın hareketi durdurup durdurmadığını henüz bilmiyoruz.</p>
+
+      <div class="connection">
+        <div>
+          <strong>GATT--DEMO</strong>
+          <p id="connection-status" role="status">Bluetooth desteği kontrol ediliyor…</p>
+        </div>
+        <button id="connect" type="button" disabled>Bağlan</button>
+        <button id="disconnect" type="button" hidden>Bağlantıyı kes</button>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="try" type="button" disabled>Dene</button>
+        <button id="restore" type="button" aria-describedby="restore-help" disabled>Tek renge dön</button>
+      </div>
+      <p class="hint" id="restore-help">Tek renge dön, bilinen kırmızı komutunu gönderir. Önceki hız ayarını geri yüklemez.</p>
+      <p class="result" id="result" role="status">Başlamadan önce şeridin tamamının tek renkte yandığını kontrol et.</p>
+      <noscript><p>Bluetooth bağlantısı için JavaScript gerekli.</p></noscript>
+    </section>
+
+    <details class="diagnostics">
+      <summary>Deney kaydı ve kaynak</summary>
+      <p>Kayıt, tarayıcıdaki FFF3 yazımlarını gösterir. Şeritteki sonucu ayrıca gözlemle.</p>
+      <ol id="log"></ol>
+      <a href="https://github.com/wronghands/violet-wire/blob/main/docs/STATIONARY_COLORS.md">Paketler, kaynaklar ve test adımları</a>
+    </details>
+  </main>
+</body>
+</html>
