@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#110d19">
+  <meta name="description" content="Cycle two custom colors across a connected Violet Wire strip.">
+  <title>Color Breathing · Violet Wire</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="home" href="https://wronghands.github.io/violet-wire/">Violet Wire</a>
+      <p class="eyebrow">Hardware experiment</p>
+      <h1>Color Breathing</h1>
+      <p class="intro">Cycle two colors across the whole strip.</p>
+    </header>
+
+    <section class="panel" aria-label="Color Breathing controls">
+      <div class="connection">
+        <div>
+          <h2>LED strip</h2>
+          <p id="connection-status" role="status">Checking Bluetooth…</p>
+        </div>
+        <button id="connect" type="button" disabled>Connect</button>
+        <button id="disconnect" type="button" hidden>Disconnect</button>
+      </div>
+
+      <fieldset id="settings">
+        <legend class="visually-hidden">Effect settings</legend>
+        <div class="palette">
+          <div class="color">
+            <label for="hex-a">Color A</label>
+            <input type="color" id="picker-a" aria-label="Pick color A" value="#8029c9">
+            <input type="text" id="hex-a" aria-label="Color A HEX" aria-describedby="error-a" value="#8029C9" maxlength="12" spellcheck="false" autocomplete="off" autocapitalize="characters">
+            <p id="error-a" class="field-error" hidden>Use six HEX digits, like #8029C9.</p>
+          </div>
+          <div class="color">
+            <label for="hex-b">Color B</label>
+            <input type="color" id="picker-b" aria-label="Pick color B" value="#d3214f">
+            <input type="text" id="hex-b" aria-label="Color B HEX" aria-describedby="error-b" value="#D3214F" maxlength="12" spellcheck="false" autocomplete="off" autocapitalize="characters">
+            <p id="error-b" class="field-error" hidden>Use six HEX digits, like #D3214F.</p>
+          </div>
+        </div>
+        <p class="palette-note">HEX sets hue, saturation, and relative brightness. The swatches show target colors.</p>
+
+        <div class="slider">
+          <div class="slider-label">
+            <label for="duration">Cycle duration <small>A → B → A</small></label>
+            <output id="duration-value" for="duration">18 s</output>
+          </div>
+          <input type="range" id="duration" min="6" max="60" step="1" value="18" aria-valuetext="18 seconds">
+        </div>
+
+        <div class="slider">
+          <div class="slider-label">
+            <label for="brightness">Brightness limit</label>
+            <output id="brightness-value" for="brightness">55%</output>
+          </div>
+          <input type="range" id="brightness" min="15" max="100" step="1" value="55" aria-valuetext="55 percent">
+        </div>
+
+        <label class="breathing-toggle" for="breathing">
+          <span><strong>Gentle breathing</strong><small id="breathing-help">Dips by up to 22% and always requests a nonzero level.</small></span>
+          <input type="checkbox" id="breathing" aria-describedby="breathing-help" checked>
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button class="primary" id="start" type="button" disabled>Start</button>
+        <button id="stop" type="button" disabled>Stop</button>
+      </div>
+      <p id="player-status" class="status" role="status">Connect the strip to start.</p>
+      <noscript><p class="status">JavaScript is needed to control the strip.</p></noscript>
+    </section>
+
+    <footer>
+      <p>Fade quality and color fidelity still need testing on the strip. Try a longer cycle if you see steps.</p>
+      <a href="https://github.com/wronghands/violet-wire/blob/main/docs/COLOR_BREATHING.md">Physical test guide</a>
+    </footer>
+  </main>
+</body>
+</html>
