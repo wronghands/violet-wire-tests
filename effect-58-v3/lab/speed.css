@@ -1,0 +1,65 @@
+:root {
+  color-scheme: dark;
+  font: 16px/1.5 system-ui, sans-serif;
+  background: #141021;
+  color: #f5f0ff;
+  --muted: #c5b8d8;
+  --line: #554563;
+  --accent: #dbbfff;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+main { width: min(100% - 28px, 510px); margin: auto; padding: 22px 0 42px; }
+header { padding: 0 2px; }
+header p, .goal p { color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 3px; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+.eyebrow { margin: 14px 0 6px; font-size: .74rem; font-weight: 750; text-transform: uppercase; letter-spacing: .12em; }
+h1 { font-size: clamp(2rem, 8vw, 2.75rem); line-height: 1.06; letter-spacing: -.04em; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.15rem; line-height: 1.2; margin: 0; }
+h3 { font-size: 1rem; margin: 0; }
+p { margin: 8px 0 0; }
+.card { margin-top: 18px; padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: #21192e; }
+.section-title, .device { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tag { white-space: nowrap; padding: 3px 9px; border-radius: 20px; background: #39294b; color: #eee0ff; font-size: .78rem; }
+.device { margin: 12px 0; padding: 10px 0; border-block: 1px solid var(--line); }
+.device p { margin: 2px 0 0; color: var(--muted); font-size: .85rem; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { font-size: .9rem; font-weight: 650; padding: 0 0 6px; }
+.choices, .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.choices label { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+.choices label:has(:checked) { border-color: var(--accent); background: #38274a; }
+.choices input { margin: 0; accent-color: var(--accent); }
+.choices strong { margin-right: 3px; }
+.choices span { font-size: .86rem; }
+.actions { margin-top: 12px; }
+button, select, input[type=number] { min-height: 44px; border: 1px solid #69587b; border-radius: 9px; font: inherit; }
+button { padding: 7px 10px; background: #30253d; color: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; }
+button.primary { background: var(--accent); color: #1b1028; border-color: transparent; }
+button:disabled, fieldset:disabled .choices label { cursor: default; opacity: .56; }
+:focus-visible { outline: 2px solid #f1ddff; outline-offset: 3px; }
+.run-status { margin-top: 12px; padding: 10px; border-radius: 8px; border-left: 3px solid #b08ad9; background: #2a2037; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.run-status p { margin: 0; font-size: .9rem; }
+.timer { color: var(--accent); font-size: 1.25rem; font-weight: 750; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.help, .diagnostics { color: var(--muted); font-size: .85rem; }
+.readings { margin: 10px 0 0; }
+.readings div { display: grid; grid-template-columns: 76px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .88rem; }
+dt { font-weight: 700; }
+dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+form { margin-top: 12px; }
+.inputs { display: grid; gap: 8px; margin: 9px 0; }
+.inputs label { display: grid; gap: 4px; font-size: .9rem; }
+input[type=number], select { width: 100%; padding: 7px 9px; color: inherit; background: #171121; }
+.goal { margin: 22px 2px 12px; }
+.goal p { font-size: .9rem; }
+summary { display: list-item; min-height: 44px; padding-block: 10px; cursor: pointer; }
+.diagnostics ol { padding-left: 24px; }
+.diagnostics code { overflow-wrap: anywhere; color: #f0ddff; }
+
+@media (max-width: 335px) {
+  .card { padding: 11px; }
+  .choices label { padding-inline: 6px; gap: 4px; }
+  button { padding-inline: 7px; }
+}

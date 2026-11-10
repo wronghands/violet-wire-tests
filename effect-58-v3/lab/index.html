@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#141021">
+  <meta name="description" content="Compare two documented speed values on the same Violet Wire LED preset.">
+  <title>Speed comparison · Violet Wire</title>
+  <link rel="stylesheet" href="./speed.css">
+  <script type="module" src="./speed.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="brand" href="https://wronghands.github.io/violet-wire/">Violet Wire home</a>
+      <p class="eyebrow">Hardware lab · 02</p>
+      <h1>Does speed change the motion?</h1>
+      <p>Compare two speeds on the same red–green preset. On this strip, speed 0 still moved.</p>
+    </header>
+
+    <section class="card" aria-labelledby="run-title">
+      <div class="section-title">
+        <h2 id="run-title">Run a comparison</h2>
+        <span class="tag">Preset 58</span>
+      </div>
+      <div class="device">
+        <div><strong>GATT--DEMO</strong><p id="connection" role="status">Checking Bluetooth…</p></div>
+        <button id="connect" type="button" disabled>Connect</button>
+        <button id="disconnect" type="button" hidden>Disconnect</button>
+      </div>
+      <fieldset id="speed-choice">
+        <legend>Speed input</legend>
+        <div class="choices">
+          <label><input type="radio" name="speed" value="0" checked><span><strong>0</strong> Minimum</span></label>
+          <label><input type="radio" name="speed" value="100"><span><strong>100</strong> Maximum</span></label>
+        </div>
+      </fieldset>
+      <div class="actions">
+        <button class="primary" id="start" type="button" disabled>Start 30-second run</button>
+        <button id="restore" type="button" disabled>Return to solid red</button>
+      </div>
+      <div class="run-status">
+        <p id="status" role="status">Pick a fixed point on the strip. Count the same kind of color boundary each time it crosses that point.</p>
+        <span class="timer" id="timer" aria-hidden="true" hidden></span>
+      </div>
+      <p class="help">Return sends the known whole-strip red command. The previous speed is unknown.</p>
+      <noscript><p>JavaScript is needed for Bluetooth and the timer.</p></noscript>
+    </section>
+
+    <section class="card" aria-labelledby="measure-title">
+      <h2 id="measure-title">Your observations</h2>
+      <p class="help">Keep this tab in view during both runs. Use the same fixed point and counting rule. A zero count alone doesn’t show that both colors stayed visible.</p>
+      <dl class="readings">
+        <div><dt>Speed 0</dt><dd id="reading-0">Awaiting observation</dd></div>
+        <div><dt>Speed 100</dt><dd id="reading-100">Awaiting observation</dd></div>
+      </dl>
+      <form id="observation" hidden>
+        <h3 id="observation-title">Record this run</h3>
+        <div class="inputs">
+          <label for="count">Crossings in 30 seconds<input id="count" type="number" min="0" max="9999" step="1" inputmode="numeric" required></label>
+          <label for="direction">Movement direction<select id="direction" required>
+            <option value="">Choose what you saw</option>
+            <option>Toward the controller</option>
+            <option>Away from the controller</option>
+            <option>Both directions</option>
+            <option>No movement seen</option>
+            <option>Unclear</option>
+          </select></label>
+        </div>
+        <button type="submit">Save observation</button>
+      </form>
+      <p class="help" id="saved" role="status">Observations stay on this page until you reload or close it.</p>
+    </section>
+
+    <section class="goal" aria-labelledby="goal-title">
+      <h2 id="goal-title">Custom colors A + B</h2>
+      <p>The goal is two chosen colors on separate halves of the strip, both stationary. A command for independent color or pixel writes is still unverified.</p>
+    </section>
+
+    <details class="diagnostics">
+      <summary>BLE write log and research</summary>
+      <p>Browser write results and exact bytes. Check the physical strip for the result.</p>
+      <ol id="log"></ol>
+      <a href="https://github.com/wronghands/violet-wire/blob/main/docs/SPEED_CONTRAST.md">Hardware steps, packet sources, and the custom-color investigation</a>
+    </details>
+  </main>
+</body>
+</html>
